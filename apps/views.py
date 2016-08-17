@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from .forms import ImageFileForm
 #from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import ImageFile
 from django.template import loader
+from django.urls import reverse
 
 # Create your views here.
 
@@ -28,7 +30,7 @@ def upload(request):
         #form.save()
         if form.is_valid():
             form.save()
-            return  HttpResponse("saved")
+            return  HttpResponseRedirect(reverse('apps:result', kwargs={'detection_type': form.cleaned_data['detection']}))
         else:
             return HttpResponse("failed")
     else:
@@ -36,7 +38,7 @@ def upload(request):
         return render(request, 'apps/upload.html', {'form':form})
 
 def result(request, detection_type):
-    detection_list = ImageFile.objects.filter(detection = detection_type)
+    detection_list = ImageFile.objects.filter(detection = detection_type).order_by('-datetime')
     template = loader.get_template('apps/result.html')
     context = {
         'detection_result_list': detection_list

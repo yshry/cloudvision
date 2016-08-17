@@ -1,18 +1,22 @@
+<a href = "{% url 'apps:index' %}" method = "get">
+Go Back to Top <br/>
+</a>
+
+<hr>
 
 {# {% extends "base.html" %} #}
 
 {% if detection_result_list %}
-
-	<ul>
-	{% for detection in detection_result_list %}
-		<li> {{ detection.data.name }} </li>
-		<li> {{ detection.detection }} </li>
-		<li> {{ detection.maxResult }} </li>
-		<li> {{ detection.result }} </li>
-		<img src = "{{ detection.data.url }}" alt="" />
-	{% endfor %}
-	</ul>
+{% for detection in detection_result_list %}
+{{ detection.data.name }} <br/>
+{{ detection.detection }} <br/>
+{{ detection.maxResult }} <br/>
+{{ detection.result }} <br/>
+<img src = "{{ detection.data.url }}" alt="" />
+<hr>
+{% endfor %}
+</ul>
 {% else %}
-	<p> No detections are available. </p>
+<p> No history is available. </p>
 {% endif %}
 
