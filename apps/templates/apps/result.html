@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+
+{# <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script> #}
+{# <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.MyThumbnail.js"></script> #}
+
 <a href = "{% url 'apps:index' %}" method = "get">
 Go Back to Top <br/>
 </a>
@@ -8,11 +13,15 @@ Go Back to Top <br/>
 
 {% if detection_result_list %}
 {% for detection in detection_result_list %}
-{{ detection.data.name }} <br/>
-{{ detection.detection }} <br/>
-{{ detection.maxResult }} <br/>
-{{ detection.result }} <br/>
-<img src = "{{ detection.data.url }}" alt="" />
+Name: {{ detection.data.name }} <br/>
+Detection Type: {{ detection.detection }} <br/>
+Max Result: {{ detection.maxResult }} <br/>
+Result:<br/>{{ detection.result }} <br/>
+
+<a href = "{{ detection.data.url}}" method= "get">
+	<img src = "{{ detection.data.url }}" alt="" /, width = 100, height=100>
+</a>
+
 <hr>
 {% endfor %}
 </ul>
