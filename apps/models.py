@@ -27,7 +27,7 @@ class ImageFile(models.Model):
         ('SAGE_SEARCH_DETECTION', 'SAFE_SEARCH_DETECTION'),
         ('IMAGE_PROPERTIES', 'IMAGE_PROPERTIES'),
     )
-    name = models.CharField(max_length = 100)
+#    name = models.CharField(max_length = 100)
     detection = models.CharField(max_length = 32,  choices=DETECTION_CHOICES, default='LABEL_DETECTION')
     maxResult = models.IntegerField(default=1, validators = [MinValueValidator(1), MaxValueValidator(10)])
     result = models.TextField()
@@ -35,3 +35,9 @@ class ImageFile(models.Model):
     
     def __str__ (self):
         return self.name
+    
+"""
+    def save(self)
+        name = data.name
+        models.Model.save(self)
+"""

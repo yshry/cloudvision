@@ -1,0 +1,18 @@
+
+{# {% extends "base.html" %} #}
+
+{% if detection_result_list %}
+
+	<ul>
+	{% for detection in detection_result_list %}
+		<li> {{ detection.data.name }} </li>
+		<li> {{ detection.detection }} </li>
+		<li> {{ detection.maxResult }} </li>
+		<li> {{ detection.result }} </li>
+		<img src = "{{ detection.data.url }}" alt="" />
+	{% endfor %}
+	</ul>
+{% else %}
+	<p> No detections are available. </p>
+{% endif %}
+

@@ -5,5 +5,4 @@ from django.forms import ModelForm
 class ImageFileForm(ModelForm):
     class Meta:
         model = ImageFile
-        fields = ['name', 'detection', 'maxResult', 'data']
-    
+        fields = ['data', 'detection', 'maxResult']

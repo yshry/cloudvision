@@ -1,3 +1,5 @@
+{# {% extends "base.html" %} #}
+
 <form action = "{% url 'apps:upload' %}" method = "POST" enctype="multipart/form-data">
 {% csrf_token %}
 

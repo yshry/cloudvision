@@ -1,0 +1,15 @@
+<h1> Google Cloud Vision Test Page </h1>
+
+<body>
+<form action = "{% url 'apps:upload' %} " method ="post">
+{% csrf_token %}
+
+Upload Image <br/>
+<input type = "file" name="upload" value="" /><br/>
+<br/>
+<input type ="submit" value = "upload"/>
+
+<a href = "/apps/LABEL_DETECTION/"> LABEL_DETECTION </a>
+
+</form>
+</body>
