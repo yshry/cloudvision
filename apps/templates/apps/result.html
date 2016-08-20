@@ -3,6 +3,18 @@
 {# <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script> #}
 {# <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.MyThumbnail.js"></script> #}
 
+<head>
+<script>
+function unicodeToChar(text){
+	return text.replace(/\\u[\dA-Fa-f]{4}/g,
+		function (match){
+			return String.fromCharCode(parseInt(matchreplace(/\\u/g, ''), 16));
+		});
+}
+</script>
+</head>
+
+
 <a href = "{% url 'apps:index' %}" method = "get">
 Go Back to Top <br/>
 </a>
@@ -16,7 +28,15 @@ Go Back to Top <br/>
 Name: {{ detection.data.name }} <br/>
 Detection Type: {{ detection.detection }} <br/>
 Max Result: {{ detection.maxResult }} <br/>
-Result:<br/>{{ detection.result }} <br/>
+Result:<br/>
+{{detection.result | safe}}
+<script type ="text/javascript">
+//var str = unicodeToChar({{ detection.result}});
+//var str2 = '<br/>test';
+//document.write(str);
+//console.log(str2);
+</script>
+<br/>
 
 <a href = "{{ detection.data.url}}" method= "get">
 	<img src = "{{ detection.data.url }}" alt="" /, width = 100, height=100>

@@ -1,0 +1,18 @@
+{% if error_message %}
+<font color = "red"> {{ error_message }} </font>
+{% endif %}
+
+<h1>Google Cloud Vision Test Page Login</h1>
+
+<form action = "{% url 'apps:login' %}" method = "POST">
+{% csrf_token %}
+User Name:
+<input type = "text" name="username" id="username" value="" />
+<br/>
+
+Password:
+<input type = "password" name="password" id="password" value="" />
+<br/>
+
+<input type = "submit" value="submit" />
+</form>
